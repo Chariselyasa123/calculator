@@ -18,7 +18,15 @@ export class BodyCalculator extends BaseElement {
                     height: 700px;
                     width: 450px;
                     border: none;
-                    padding: 1rem;
+                    padding: 1.4rem;
+                    box-sizing:border-box;
+                }
+                
+                .display{
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
                 }
             </style>
         `;
@@ -28,7 +36,10 @@ export class BodyCalculator extends BaseElement {
         const number = this.getState("number");
         return `
             <div class="wrapper">
-                <slot name="display"></slot>
+                <div class="display">
+                    <slot name="display"></slot>
+                    <slot name="button"></slot>
+                </div>
             </div>
         `;
     }

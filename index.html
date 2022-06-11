@@ -5,20 +5,41 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <title>Calculator</title>
 </head>
 <body>
 <body-calculator>
-    <span slot="child">
-        <button-calculator>+</button-calculator>
+    <span slot="display">
+        <display-number></display-number>
+    </span>
+    <span slot="button">
+        <div class="button-group">
+            <button-calculator value="AC"></button-calculator>
+            <button-calculator value="$"></button-calculator>
+            <button-calculator value="%"></button-calculator>
+            <button-calculator value="/" class="operator"></button-calculator>
+            <button-calculator value="7"></button-calculator>
+            <button-calculator value="8"></button-calculator>
+            <button-calculator value="9"></button-calculator>
+            <button-calculator value="x" class="operator"></button-calculator>
+            <button-calculator value="4"></button-calculator>
+            <button-calculator value="5"></button-calculator>
+            <button-calculator value="6"></button-calculator>
+            <button-calculator value="-" class="operator"></button-calculator>
+            <button-calculator value="3"></button-calculator>
+            <button-calculator value="2"></button-calculator>
+            <button-calculator value="1"></button-calculator>
+            <button-calculator value="+" class="operator"></button-calculator>
+            <button-calculator value="0" class="span-2"></button-calculator>
+            <button-calculator value="."></button-calculator>
+            <button-calculator value="="></button-calculator>
+        </div>
     </span>
 </body-calculator>
 <script type="module" src="js/main.js"></script>
-<script>
-    const add = () => {
-        console.log('add');
-    }
-</script>
 </body>
 </html>

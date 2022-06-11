@@ -6,45 +6,65 @@ export class Button extends BaseElement {
     }
 
     connectedCallback() {
-        const number = this.getAttribute("number");
-        this.setState("number", number);
+        const number = this.getAttribute("value");
+        this.setState("value", number);
     }
 
     style() {
         return `
             <style>
                 button {
+                    box-sizing:border-box;
                     align-items: center;
                     background-color: #afd275;
                     box-shadow: 
-                    12px 12px 16px 0 rgba(0, 0, 0, 0.25),
-                    -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
-                    border-radius: 30%;
+                    5px 5px 10px 0 rgba(0, 0, 0, 0.25),
+                    -5px -5px 10px 0 rgba(255, 255, 255, 0.3);
+                    border-radius: 20px;
                     display: flex;
-                    height: 70px;
-                    width: 70px;
+                    height: 80px;
+                    width: 100%;
                     justify-content: center;
                     border: none;
                     font-size: 2rem;
                     cursor: pointer;
                     transition: all .02s ease-in-out;
+                    font-family: 'Orbitron', sans-serif;
+                    padding: .1rem;
                 }
                 
                 button:hover {
-                    background-color: #a7d143;
+                    background-color: #9AC751;
                     transform: scale(1.1);
                 }
                 
                 button:active {
-                    background-color: #99c129;
+                    background-color: #82B039;
                     transform: translateY(4px);
+                }
+                
+                .equal-sign{
+                    background:#9874D2;
+                    color: #fff;
+                }
+                
+                .equal-sign:hover{
+                    background:#7E51C7;
+                }
+                
+                .equal-sign:active {
+                    background:#6739B0;
                 }
             </style>
         `;
     }
 
     render() {
-        const number = this.getState("number");
-        return `<button>${number}</button>`;
+        const value = this.getState("value");
+        return `
+            <button class="${value === '=' ? 'equal-sign' : ''}" >
+                <span part="operator">${value}</span>
+            </button>
+        `;
     }
 }

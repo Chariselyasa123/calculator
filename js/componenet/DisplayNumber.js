@@ -5,46 +5,56 @@ export class DisplayNumber extends BaseElement {
         super();
     }
 
-    connectedCallback() {
-        const number = this.getAttribute("number");
-        this.setState("number", number);
-    }
-
     style() {
         return `
             <style>
-                button {
-                    align-items: center;
-                    background-color: #afd275;
+                .display-wrapper {
+                    box-sizing:border-box;
+                    background-color: #9AC751;
                     box-shadow: 
-                    12px 12px 16px 0 rgba(0, 0, 0, 0.25),
-                    -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
-                    border-radius: 30%;
+                    5px 5px 10px 0 rgba(0, 0, 0, 0.25),
+                    -5px -5px 10px 0 rgba(255, 255, 255, 0.3);
+                    border-radius: 10px;
+                    display: block;
+                    height: 150px;
+                    width: 100%;
+                    font-size: 3rem;
+                    padding: .5rem;
+                }
+                
+                .number {
+                    box-sizing:border-box;
+                    border: 2px solid #9874D2;
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 10px;
                     display: flex;
-                    height: 70px;
-                    width: 70px;
-                    justify-content: center;
-                    border: none;
-                    font-size: 2rem;
-                    cursor: pointer;
-                    transition: all .02s ease-in-out;
+                    flex-direction: column;
+                    align-items: flex-end;
+                    padding-right: .5rem;
+                    font-family: Digital, monospace;
+                    padding-top:3rem;
+                    gap: .5rem;
                 }
                 
-                button:hover {
-                    background-color: #a7d143;
-                    transform: scale(1.1);
-                }
-                
-                button:active {
-                    background-color: #99c129;
-                    transform: translateY(4px);
+                .calculation {
+                    box-sizing:border-box;
+                    font-size: 1rem;
+                    font-weight: bold;
+                    letter-spacing: 0.2rem;
                 }
             </style>
         `;
     }
 
     render() {
-        const number = this.getState("number");
-        return `<button>${number}</button>`;
+        return `
+            <div class="display-wrapper">
+                <div class="number">
+                    <div class="calculation">7+7</div>
+                    <div class="total">8888888888888888</div>
+                </div>
+            </div>
+        `;
     }
 }
