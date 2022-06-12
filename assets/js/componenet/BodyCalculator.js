@@ -33,7 +33,6 @@ export class BodyCalculator extends BaseElement {
     }
 
     render() {
-        const number = this.getState("number");
         return `
             <div class="wrapper">
                 <div class="display">

@@ -6,8 +6,8 @@ export class Button extends BaseElement {
     }
 
     connectedCallback() {
-        const number = this.getAttribute("value");
-        this.setState("value", number);
+        const value = this.getAttribute("value");
+        this.setState("value", value);
     }
 
     style() {
@@ -62,8 +62,8 @@ export class Button extends BaseElement {
     render() {
         const value = this.getState("value");
         return `
-            <button class="${value === '=' ? 'equal-sign' : ''}" >
-                <span part="operator">${value}</span>
+            <button class="${value === '=' ? 'equal-sign' : ''} button" >
+                <span part="operator">${value === 'power' ? 'X<sup>2</sup>' : value}</span>
             </button>
         `;
     }

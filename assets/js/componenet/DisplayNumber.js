@@ -28,13 +28,10 @@ export class DisplayNumber extends BaseElement {
                     width: 100%;
                     height: 100%;
                     border-radius: 10px;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: flex-end;
-                    padding-right: .5rem;
+                    padding-right: .2rem;
                     font-family: Digital, monospace;
-                    padding-top:3rem;
-                    gap: .5rem;
+                    display: grid;
+                    grid-template-rows: 2fr 2fr;
                 }
                 
                 .calculation {
@@ -42,17 +39,45 @@ export class DisplayNumber extends BaseElement {
                     font-size: 1rem;
                     font-weight: bold;
                     letter-spacing: 0.2rem;
+                    display: flex;
+                    align-items: flex-end;
+                    justify-content: flex-end;
+                }
+                
+                .total{
+                    box-sizing:border-box;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-end;
+                }
+                
+                /*make blinking cursor in total*/
+                .total::after {
+                    content: "|";
+                    color: #9874D2;
+                    font-size: 5rem;
+                    animation: blinker 1s linear infinite;
+                    display: flex;
+                    align-items: baseline;
+                }
+                
+                @keyframes blinker {
+                    50% {
+                        opacity: 0;
+                    }
                 }
             </style>
         `;
     }
 
     render() {
+        const value = this.getState("value") ?? '';
+        const operation = this.getState("operation") ?? '';
         return `
             <div class="display-wrapper">
                 <div class="number">
-                    <div class="calculation">7+7</div>
-                    <div class="total">8888888888888888</div>
+                    <div class="calculation">${operation}</div>
+                    <div class="total">${value}</div>
                 </div>
             </div>
         `;

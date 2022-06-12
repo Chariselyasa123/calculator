@@ -3,7 +3,7 @@ export class BaseElement extends HTMLElement {
         super();
 
         // Automatically fetch the shadow root
-        this._component = this.attachShadow({mode: "closed"});
+        this._component = this.attachShadow({mode: "open"});
 
         // Set up a default state
         this._state = {};
