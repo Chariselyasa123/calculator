@@ -7,6 +7,8 @@ body {
     align-items: center;
     background-color: #afd275;
     display: flex;
+    flex-direction: column;
+    gap: 4rem;
     height: 100vh;
     justify-content: center;
 }
@@ -21,7 +23,7 @@ body {
     grid-column: span 2 / span 2;
 }
 
-.operator::part(operator)  {
+.operator::part(operator) {
     border: 2px solid #9874D2;
     color: #9874D2;
     width: 100%;
@@ -32,12 +34,12 @@ body {
     align-items: center;
 }
 
-.operator::part(operator):hover  {
+.operator::part(operator):hover {
     border: 2px solid #7E51C7;
     color: #7E51C7;
 }
 
-.operator::part(operator):focus  {
+.operator::part(operator):focus {
     border: 2px solid #6739B0;
     color: #6739B0;
 }
