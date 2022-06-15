@@ -43,23 +43,25 @@ export class ServiceCalculator {
         return this.display.getState('operation');
     }
 
-    value(value) {
-        return value.substring(0, 16);
-    }
-
     inputNumber(number) {
+        if (this.display._component.lastElementChild.lastElementChild.lastElementChild.offsetWidth + 22 > this.display.offsetWidth) return;
         if (this.currentValue === '0') this.currentValue = number;
-        else this.currentValue = this.value(this.currentValue + number);
+        else this.currentValue += number;
     }
 
     inputOperator(operator) {
-        this.prevValue = this.currentValue;
+        if (this.operator === "") {
+            this.prevValue = this.currentValue;
+        }
         this.operator = operator;
         this.currentValue = '';
         this.setDisplayOperation(this.prevValue + this.operator);
     }
 
     inputDecimal(dot) {
+        if (this.currentValue.includes(".")) {
+            return;
+        }
         this.currentValue += dot;
     }
 
@@ -104,9 +106,14 @@ export class ServiceCalculator {
         })
     }
 
+    hasNumber(myString) {
+        return /\d/.test(myString);
+    }
+
     equals() {
         this.calculate();
         const currentDisplayOperation = this.getDisplayOperation();
+        if (!this.hasNumber(currentDisplayOperation) || !currentDisplayOperation) return;
         this.setDisplayOperation(currentDisplayOperation + this.currentValue + '=');
     }
 
@@ -194,6 +201,10 @@ export class ServiceCalculator {
                 this.total = parseFloat(this.currentValue);
                 break;
         }
+
+        // prevent total from displaying NaN
+        if (isNaN(this.total)) return;
+
         this.setDisplayValue(this.total);
     }
 
