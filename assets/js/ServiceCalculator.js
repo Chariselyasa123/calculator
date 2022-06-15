@@ -50,9 +50,8 @@ export class ServiceCalculator {
     }
 
     inputOperator(operator) {
-        if (this.operator === "") {
-            this.prevValue = this.currentValue;
-        }
+        if (this.currentValue === '') return;
+        this.prevValue = this.currentValue;
         this.operator = operator;
         this.currentValue = '';
         this.setDisplayOperation(this.prevValue + this.operator);
@@ -209,7 +208,11 @@ export class ServiceCalculator {
     }
 
     clearValue() {
-        this.allClear.addEventListener('click', () => {
+        this.allClear.onkeydown = (e) => {
+            e.preventDefault();
+            return false;
+        }
+        this.allClear.addEventListener('click', (e) => {
             this.currentValue = '';
             this.prevValue = '';
             this.operator = '';

@@ -62,7 +62,7 @@ export class Button extends BaseElement {
     render() {
         const value = this.getState("value");
         return `
-            <button class="${value === '=' ? 'equal-sign' : ''} button" >
+            <button type="button" class="${value === '=' ? 'equal-sign' : ''} button" >
                 <span part="operator">${value === 'power' ? 'X<sup>2</sup>' : value}</span>
             </button>
         `;
